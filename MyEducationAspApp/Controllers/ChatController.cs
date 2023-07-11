@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using MyEducationAspApp.DAL;
 using MyEducationAspApp.Models;
 
 namespace MyEducationAspApp.Controllers;
@@ -15,7 +16,14 @@ public class ChatController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        using var mainDbContext = new MainDbContext(".\\MainDb.db");
+        var messageEntities = mainDbContext.ChatMessages
+            .OrderByDescending(m => m.TimeStamp)
+            .Take(50)
+            .OrderBy(m => m.TimeStamp)
+            .ToList();
+
+        return View(new ChatModel(messageEntities));
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
