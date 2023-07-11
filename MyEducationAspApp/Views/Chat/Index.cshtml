@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ChatModel
+@{
     ViewData["Title"] = "Live chat";
 }
 <head>
@@ -6,6 +7,13 @@
 </head>
 <div class="chat-container">
     <div class="chat-history-container" id="messagesList">
+        @if (Model is not null)
+        {
+            foreach (var message in Model.MessageEntities)
+            {
+                <p>@message.UserName: @message.MessageText</p>
+            }
+        }
     </div>
 
     <div class="message-form-container">
