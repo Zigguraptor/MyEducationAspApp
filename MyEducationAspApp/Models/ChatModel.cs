@@ -2,7 +2,7 @@
 
 namespace MyEducationAspApp.Models;
 
-public class ChatModel
+public class ChatModel : BaseModel
 {
     public ChatModel()
     {
