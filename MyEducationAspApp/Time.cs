@@ -1,4 +1,4 @@
-﻿namespace JustAspEducationalProject;
+﻿namespace MyEducationAspApp;
 
 public static class Time
 {
