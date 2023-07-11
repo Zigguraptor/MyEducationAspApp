@@ -16,14 +16,12 @@ public class ChatController : Controller
 
     public IActionResult Index()
     {
-        using var mainDbContext = new MainDbContext(".\\MainDb.db");
-        var messageEntities = mainDbContext.ChatMessages
-            .OrderByDescending(m => m.TimeStamp)
-            .Take(50)
-            .OrderBy(m => m.TimeStamp)
-            .ToList();
-
-        return View(new ChatModel(messageEntities));
+        var model = new ChatModel
+        {
+            MessageEntities = MainDbManager.GetLimitedMessageHistory(),
+            Counters = RegisterVisitors()
+        };
+        return View(model);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
