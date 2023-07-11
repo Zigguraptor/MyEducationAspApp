@@ -41,6 +41,24 @@
     <div class="container">
         &copy; 2023 - MyEducationAspApp //todo add link to github
     </div>
+    <div class="counter">
+        <span class="counter-label">Уникальные посетители за сегодня:</span>
+        <span id="today-counter" class="counter-value">
+            @if (Model is not null && Model.Counters is not null)
+            {
+                @Model.Counters.TodayCounter
+            }
+        </span>
+    </div>
+    <div class="counter">
+        <span class="counter-label">За всё время:</span>
+        <span id="total-counter" class="counter-value">
+            @if (Model is not null && Model.Counters is not null)
+            {
+                @Model.Counters.TotalCounter
+            }
+        </span>
+    </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
