@@ -9,7 +9,13 @@ connection.on("ReceiveMessage", function (user, message) {
     var p = document.createElement("p");
     p.textContent = user + ": " + message;
     var messageList = document.getElementById("messagesList");
-    messageList.appendChild(p);
+
+    if (messageList.scrollTop + messageList.clientHeight === messageList.scrollHeight) {
+        messageList.appendChild(p);
+        messageList.scrollTop = messageList.scrollHeight;
+    } else {
+        messageList.appendChild(p);
+    }
 });
 
 connection.start().then(function () {
