@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using JustAspEducationalProject;
+using Microsoft.AspNetCore.SignalR;
 using MyEducationAspApp.DAL;
 using MyEducationAspApp.DAL.Entities;
 
