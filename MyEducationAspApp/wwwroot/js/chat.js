@@ -1,5 +1,8 @@
 ﻿"use strict";
 
+var messageHistoryContainer = document.getElementById("messagesList");
+messageHistoryContainer.scrollTop = messageHistoryContainer.scrollHeight;
+
 var connection = new signalR.HubConnectionBuilder().withUrl("/hubs/chat").build();
 
 //Disable the send button until connection is established.
