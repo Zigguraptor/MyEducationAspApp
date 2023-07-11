@@ -1,0 +1,29 @@
+﻿@model ChatModel
+@{
+    ViewData["Title"] = "Live chat";
+}
+<head>
+    <link rel="stylesheet" href="~/css/chat.css"/>
+</head>
+<div class="chat-container">
+    <div class="chat-history-container" id="messagesList">
+        @if (Model is not null)
+        {
+            foreach (var message in Model.MessageEntities)
+            {
+                <p>@message.UserName: @message.MessageText</p>
+            }
+        }
+    </div>
+
+    <div class="message-form-container">
+        <label for="userInput">Отображаемое имя: </label>
+        <input class="text-input" type="text" name="name" id="userInput"/>
+        <label for="messageInput">Сообщение: </label>
+        <textarea class="text-input" name="message" id="messageInput"></textarea>
+
+        <input type="button" id="sendButton" value="Отправить">
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
