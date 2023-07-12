@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyEducationAspApp.Controllers.Base;
+using MyEducationAspApp.DAL;
 using MyEducationAspApp.Models;
 
 namespace MyEducationAspApp.Controllers
@@ -8,7 +9,7 @@ namespace MyEducationAspApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MainDbContext mainDbContext) : base(mainDbContext)
         {
             _logger = logger;
         }
