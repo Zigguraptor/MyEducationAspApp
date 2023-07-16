@@ -30,6 +30,14 @@ connection.start().then(function () {
 document.getElementById("sendButton").addEventListener("click", function (event) {
     var user = document.getElementById("userInput").value;
     var message = document.getElementById("messageInput").value;
+    if (user.length < 3) {
+        alert("Имя должно быть больше 3 символов!");
+        return;
+    }
+    if (message.length < 3) {
+        alert("Сообщение должно быть больше 3 символов!");
+        return;
+    }
     connection.invoke("SendMessage", user, message).catch(function (err) {
         return console.error(err.toString());
     });
