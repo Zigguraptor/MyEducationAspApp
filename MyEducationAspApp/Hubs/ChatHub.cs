@@ -8,6 +8,9 @@ public class ChatHub : Hub
 {
     public async Task SendMessage(string user, string message)
     {
+        if (user.Length < 3 || message.Length < 3)
+            return;
+
         await using var dbContext = new MainDbContext(".\\MainDb.db");
         dbContext.ChatMessages.Add(new ChatMessageEntity
         {
