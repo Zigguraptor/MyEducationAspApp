@@ -17,4 +17,5 @@ RUN dotnet publish "MyEducationAspApp.csproj" -c Release -o /app/publish /p:UseA
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN apt-get update && apt-get install -y procps
 ENTRYPOINT ["dotnet", "MyEducationAspApp.dll"]

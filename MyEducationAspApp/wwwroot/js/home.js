@@ -3,10 +3,14 @@
     .build();
 
 connection.on("ReceiveStatus", function (freeRam) {
-
-    document.getElementById("ram-info").innerText = "Свободная RAM: " + freeRam;
+    if (!freeRam || freeRam.trim() === "") {
+        freeRam = "Статус недоступен";
+    }
+    document.getElementById("status-info").innerText = freeRam;
 });
 
 connection.start().catch(function (err) {
-    return console.error(err.toString());
+    console.error(err.toString());
+    document.getElementById("status-info").innerText = "Статус недоступен";
+    document.getElementById("status-info").classList.add("text-danger");
 });

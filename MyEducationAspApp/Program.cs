@@ -50,6 +50,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<ChatHub>("/hubs/chat");
-app.MapHub<StatusHub>("/hubs/status");
+if (File.Exists("/bin/bash"))
+    app.MapHub<StatusHub>("/hubs/status");
 
 app.Run();
