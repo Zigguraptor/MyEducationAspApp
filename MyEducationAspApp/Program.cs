@@ -15,7 +15,14 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 builder.Services.AddDbContext<MainDbContext>(optionsBuilder =>
     optionsBuilder.UseSqlite(builder.Configuration.GetConnectionString("MainDb")));
 
-builder.Services.AddHostedService<StatusMonitorService>();
+if (File.Exists("/bin/bush"))
+{
+    builder.Services.AddHostedService<StatusMonitorService>();
+}
+else
+{
+    Console.WriteLine("WARNiNG: \"/bin/bush\" not found.");
+}
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
