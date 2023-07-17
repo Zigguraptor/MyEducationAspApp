@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using MyEducationAspApp.DAL;
 using MyEducationAspApp.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 
+builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
+
+builder.Services.AddDbContext<MainDbContext>(optionsBuilder =>
+    optionsBuilder.UseSqlite(builder.Configuration.GetConnectionString("MainDb")));
+
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<MainDbContext>().Database.EnsureCreated();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
