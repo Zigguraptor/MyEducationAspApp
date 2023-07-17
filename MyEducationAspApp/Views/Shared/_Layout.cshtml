@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - MyEducationAspApp</title>
+    <title>@ViewData["Title"] - Мой сайт</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/MyEducationAspApp.styles.css" asp-append-version="true"/>
@@ -12,7 +12,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyEducationAspApp</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -20,10 +20,10 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Chat" asp-action="Index">Чат</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">Обо мне</a>
+                        <a class="nav-link text-primary" asp-area="" asp-controller="Contacts" asp-action="Index">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -38,7 +38,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2023 - MyEducationAspApp //todo add link to github
+        &copy; 2023 - MyEducationAspApp - <a href="https://github.com/Zigguraptor/MyEducationAspApp">исходный код на GitHub</a>
     </div>
     <div class="counter">
         <span class="counter-label">Уникальные посетители за сегодня:</span>
