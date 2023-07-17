@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyEducationAspApp.BackgroundServices;
 using MyEducationAspApp.DAL;
 using MyEducationAspApp.Hubs;
 
@@ -13,6 +14,8 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 
 builder.Services.AddDbContext<MainDbContext>(optionsBuilder =>
     optionsBuilder.UseSqlite(builder.Configuration.GetConnectionString("MainDb")));
+
+builder.Services.AddHostedService<StatusMonitorService>();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
