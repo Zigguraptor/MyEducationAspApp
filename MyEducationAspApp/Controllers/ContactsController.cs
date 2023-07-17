@@ -4,18 +4,18 @@ using MyEducationAspApp.Models;
 
 namespace MyEducationAspApp.Controllers;
 
-public class AboutController : BaseController
+public class ContactsController : BaseController
 {
-    private readonly ILogger<AboutController> _logger;
+    private readonly ILogger<ContactsController> _logger;
 
-    public AboutController(ILogger<AboutController> logger)
+    public ContactsController(ILogger<ContactsController> logger)
     {
         _logger = logger;
     }
 
     public IActionResult Index()
     {
-        var model = new AboutModel()
+        var model = new ContactsModel()
         {
             Counters = RegisterVisitors()
         };

@@ -1,5 +1,5 @@
 ﻿namespace MyEducationAspApp.Models;
 
-public class AboutModel : BaseModel
+public class ContactsModel : BaseModel
 {
 }
