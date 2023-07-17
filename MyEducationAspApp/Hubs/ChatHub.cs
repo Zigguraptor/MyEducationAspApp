@@ -15,6 +15,9 @@ public class ChatHub : Hub
 
     public async Task SendMessage(string user, string message)
     {
+        if (user.Length < 3 || message.Length < 3)
+            return;
+
         _mainDbContext.ChatMessages.Add(new ChatMessageEntity
         {
             TimeStamp = Time.GetTimeStamp(),
