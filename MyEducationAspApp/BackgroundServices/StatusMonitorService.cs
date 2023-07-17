@@ -55,7 +55,9 @@ public class StatusMonitorService : BackgroundService
         ramInGb = ConvertKbToGb(ramInGb);
         cpuPercents = 100 - cpuPercents;
 
-        return $"Used CPU: {cpuPercents}%\nUsed RAM: {ramInGb} GB/{_totalRam} GB";
+        var serverTime = DateTime.Now;
+        return
+            $"Used CPU: {cpuPercents}%\nUsed RAM: {ramInGb} GB/{_totalRam} GB\nServer time: {serverTime.ToString(CultureInfo.InvariantCulture)}";
     }
 
     private static double ConvertKbToGb(double kilobits)
