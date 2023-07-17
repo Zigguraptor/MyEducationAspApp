@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MyEducationAspApp.BackgroundServices;
 using MyEducationAspApp.DAL;
 using MyEducationAspApp.Hubs;
 
@@ -13,6 +14,15 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 
 builder.Services.AddDbContext<MainDbContext>(optionsBuilder =>
     optionsBuilder.UseSqlite(builder.Configuration.GetConnectionString("MainDb")));
+
+if (File.Exists("/bin/bash"))
+{
+    builder.Services.AddHostedService<StatusMonitorService>();
+}
+else
+{
+    Console.WriteLine("WARNiNG: \"/bin/bush\" not found.");
+}
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
@@ -40,5 +50,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<ChatHub>("/hubs/chat");
+app.MapHub<StatusHub>("/hubs/status");
 
 app.Run();
