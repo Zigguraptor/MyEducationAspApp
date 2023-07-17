@@ -30,7 +30,7 @@ public class StatusMonitorService : BackgroundService
 
             await _hubContext.Clients.All.SendAsync("ReceiveStatus", stats, cancellationToken: stoppingToken);
 
-            await Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
+            await Task.Delay(TimeSpan.FromSeconds(1), stoppingToken);
         }
     }
 
