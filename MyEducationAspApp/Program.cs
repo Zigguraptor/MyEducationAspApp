@@ -15,7 +15,7 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
 builder.Services.AddDbContext<MainDbContext>(optionsBuilder =>
     optionsBuilder.UseSqlite(builder.Configuration.GetConnectionString("MainDb")));
 
-if (File.Exists("/bin/bush"))
+if (File.Exists("/bin/bash"))
 {
     builder.Services.AddHostedService<StatusMonitorService>();
 }
