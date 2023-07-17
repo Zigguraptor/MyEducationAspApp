@@ -5,16 +5,10 @@ namespace MyEducationAspApp.DAL;
 
 public sealed class MainDbContext : DbContext
 {
-    public MainDbContext(string dbPath)
+    public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
     {
-        DbPath = dbPath;
-        Database.EnsureCreated();
     }
 
-    private string DbPath { get; }
     public DbSet<ChatMessageEntity> ChatMessages { get; set; } = null!;
     public DbSet<VisitorEntity> Visitors { get; set; } = null!;
-
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite($"Data Source={DbPath}");
 }
