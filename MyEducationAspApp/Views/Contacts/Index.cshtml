@@ -4,6 +4,38 @@
 
 <div class="text-center">
     <h1 class="display-4">Контакты</h1>
-    <p>Почта: cobaltum8@gmail.com</p>
-    <p>Аккаунт GitHub <a href="https://github.com/Zigguraptor">https://github.com/Zigguraptor</a></p>
+    <div class="email-container">
+        <p>Почта:</p>
+        <p id="email-link" class="link-primary">cobaltum8@gmail.com</p>
+        <p id="copy-info" class="text-success" style="display: none;">Скопировано!</p>
+    </div>
+    <p>Аккаунт GitHub: <a href="https://github.com/Zigguraptor">https://github.com/Zigguraptor</a></p>
+    <p>Резюме на hh.ru: <a href="https://hh.ru/resume/9eb6a81fff0c0ec5420039ed1f334e53324236">https://hh.ru/resume/9eb6a81fff0c0ec5420039ed1f334e53324236</a></p>
 </div>
+<script>
+
+document.getElementById('email-link').addEventListener('click', function() {
+    var emailAddress = "cobaltum8@gmail.com";
+
+    var tempTextArea = document.createElement('textarea');
+    tempTextArea.value = emailAddress;
+    tempTextArea.style.position = 'absolute';
+    tempTextArea.style.left = '-9999px';
+    document.body.appendChild(tempTextArea);
+
+    tempTextArea.select();
+
+    document.execCommand('copy');
+
+    document.body.removeChild(tempTextArea);
+
+    var copyInfo = document.getElementById('copy-info');
+    copyInfo.style.display = 'inline';
+  
+    setTimeout(function() {
+        copyInfo.style.display = 'none';
+    }, 3000);
+});
+//я не знаю js. Но почти уверен, что это так не делается.
+//и там есть баг
+</script>
